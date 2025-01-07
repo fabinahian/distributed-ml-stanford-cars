@@ -1,0 +1,39 @@
+# Distributed training configuration
+num_nodes: 4
+num_classes: 10
+batch_size: 16 # Reduced batch size per GPU
+num_epochs: 5
+
+# Resource management
+memory_fraction: 0.23 # Each node gets ~2.3GB GPU memory (10GB total)
+num_workers: 1 # Reduced workers per process
+pin_memory: true
+prefetch_factor: 2 # Reduce prefetch factor
+persistent_workers: true
+
+# Data configuration
+train_dir: "data/car_data/train"
+test_dir: "data/car_data/test"
+
+# Model configuration
+model_name: "resnet18"
+pretrained: true
+
+# Optimizer configuration
+optimizer:
+  type: "AdamW"
+  learning_rate: 0.001
+  weight_decay: 0.01
+
+# Learning rate scheduler
+scheduler:
+  type: "ReduceLROnPlateau"
+  mode: "max"
+  factor: 0.1
+  patience: 5
+  verbose: true
+
+# Memory optimization
+gradient_accumulation_steps: 4 # Accumulate gradients
+empty_cache_freq: 10 # Empty CUDA cache frequency (iterations)
+find_unused_parameters: true # DDP optimization

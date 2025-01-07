@@ -1,0 +1,44 @@
+# Experiment configuration
+experiment_name: null # Will be auto-generated if not provided
+
+# Training configuration
+num_classes: 10
+batch_size: 32
+num_epochs: 5
+learning_rate: 0.0001
+
+# Data configuration
+train_dir: "data/car_data/train"
+test_dir: "data/car_data/test"
+
+# GPU configuration
+memory_fraction: 1.0
+
+# Optimizer configuration
+weight_decay: 0.01
+momentum: 0.9
+
+# Learning rate scheduler
+scheduler:
+  type: "ReduceLROnPlateau"
+  params:
+    mode: "max"
+    factor: 0.1
+    patience: 10
+    verbose: true
+
+# Augmentation settings
+augmentation:
+  random_resize_crop: true
+  random_horizontal_flip: true
+  color_jitter:
+    brightness: 0.3
+    contrast: 0.3
+    saturation: 0.3
+    hue: 0.1
+  random_rotation: 15
+  random_affine:
+    degrees: 10
+    translate: [0.1, 0.1]
+    scale: [0.9, 1.1]
+    shear: 5
