@@ -1,4 +1,4 @@
-# Multi-Node Training Simulation with Single GPU
+# Designing ML System using Data-Parallel Distributed Neural Network Training
 
 This project demonstrates distributed training simulation using a single GPU by partitioning GPU memory. It shows how multi-node training can be more efficient than single-node training, even when simulated on a single device.
 
@@ -105,9 +105,9 @@ tensorboard --logdir runs/
 
 ```yaml
 # configs/single_node_config.yaml
-batch_size: 32
+batch_size: 8
 num_epochs: 100
-learning_rate: 0.001
+learning_rate: 0.0001
 ```
 
 ### Distributed Configuration
@@ -147,7 +147,7 @@ python src/scripts/train_distributed.py --num-nodes 4 --num-epochs=100 --batch-s
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the LICENSE file for details
+This project is a open-source project developed as a coursework for CSE707 Distributed Computing Systems, MSCCSE, Brac University.
 
 ## 🤝 Contributing
 
@@ -162,14 +162,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Limited by single GPU memory (10GB RTX 3080)
 - System RAM constraints (16GB)
 - Simulation overhead vs actual multi-GPU setup
-
-## 📧 Contact
-
-Your Name - email@example.com
-Project Link: https://github.com/yourusername/project-name
-
-## 🙏 Acknowledgments
-
-- PyTorch Distributed Documentation
-- ResNet Paper
-- Related Research Papers
+- Fault tolarance testing
